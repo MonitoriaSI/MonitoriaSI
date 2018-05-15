@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ano: 1
+  periodo: 1
+  dataInicio: 2018-05-15
+  dataFim: 2018-05-15
+
+two:
+  ano: 1
+  periodo: 1
+  dataInicio: 2018-05-15
+  dataFim: 2018-05-15

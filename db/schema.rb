@@ -10,6 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20180515182716) do
+
+  create_table "semesters", force: :cascade do |t|
+    t.integer "ano"
+    t.integer "periodo"
+    t.date "dataInicio"
+    t.date "dataFim"
+
 ActiveRecord::Schema.define(version: 20180513020800) do
 
   create_table "disciplines", force: :cascade do |t|
