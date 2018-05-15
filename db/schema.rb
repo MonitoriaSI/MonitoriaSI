@@ -17,6 +17,15 @@ ActiveRecord::Schema.define(version: 20180515182716) do
     t.integer "periodo"
     t.date "dataInicio"
     t.date "dataFim"
+
+ActiveRecord::Schema.define(version: 20180513020800) do
+
+  create_table "disciplines", force: :cascade do |t|
+    t.string "descricao"
+    t.string "codigo"
+    t.string "sigla"
+    t.integer "cargaHoraria"
+    t.integer "periodo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
