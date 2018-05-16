@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team: one
+  inicio: 2018-05-16
+  fim: 2018-05-16
+  local: MyString
+
+two:
+  team: two
+  inicio: 2018-05-16
+  fim: 2018-05-16
+  local: MyString
