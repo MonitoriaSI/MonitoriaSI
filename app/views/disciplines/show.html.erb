@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @discipline.descricao %>
+</p>
+
+<p>
+  <strong>Codigo:</strong>
+  <%= @discipline.codigo %>
+</p>
+
+<p>
+  <strong>Sigla:</strong>
+  <%= @discipline.sigla %>
+</p>
+
+<p>
+  <strong>Cargahoraria:</strong>
+  <%= @discipline.cargaHoraria %>
+</p>
+
+<p>
+  <strong>Periodo:</strong>
+  <%= @discipline.periodo %>
+</p>
+
+<%= link_to 'Edit', edit_discipline_path(@discipline) %> |
+<%= link_to 'Back', disciplines_path %>
