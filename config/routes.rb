@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+
+  devise_for :users
+  root 'home#index'
   
+  get 'home/index'
+
   resources :events
   resources :teams
   resources :people
