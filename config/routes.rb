@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+
+  root 'home#index'
   
+  get 'home/index'
+
   resources :events
   resources :teams
   resources :people
