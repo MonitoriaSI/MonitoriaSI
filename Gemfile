@@ -55,3 +55,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Bibliotecas implementadas para o projeto MonitoriaIFPB
 gem 'devise' #controle de acesso. Usuário e senha.
+gem 'jquery-rails'
+gem 'bootstrap-sass'

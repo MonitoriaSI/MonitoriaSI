@@ -31,6 +31,11 @@
     <%= form.text_field :perfil, id: :person_perfil %>
   </div>
 
+  <div style="visibility:hidden" class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :person_user_id %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
