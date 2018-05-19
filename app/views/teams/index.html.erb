@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Teams</h1>
+<h1>Turma</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Discipline</th>
-      <th>Semester</th>
-      <th>Editalanexo</th>
+      <th>Disciplina</th>
+      <th>Semestre</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,7 +16,6 @@
       <tr>
         <td><%= team.discipline %></td>
         <td><%= team.semester %></td>
-        <td><%= team.editalAnexo %></td>
         <td><%= link_to 'Show', team %></td>
         <td><%= link_to 'Edit', edit_team_path(team) %></td>
         <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
