@@ -10,6 +10,16 @@
   <%= @team.semester %>
 </p>
 
+<%= form_for @team do |form| %>
+  <div class="field">
+    <%= form.label :monitor_id %>
+    <%= form.select(:monitor_id, @alunos.collect {|a| [a.nome, a.id]}, id: :team_monitor_id,  include_blank: true) %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
 
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>

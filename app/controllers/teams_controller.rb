@@ -10,6 +10,7 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @alunos = Person.aluno
   end
 
   # GET /teams/new
@@ -73,6 +74,6 @@ class TeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      params.require(:team).permit(:discipline_id, :semester_id, :editalAnexo)
+      params.require(:team).permit(:discipline_id, :semester_id, :editalAnexo, :monitor_id)
     end
 end
