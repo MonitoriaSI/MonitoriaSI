@@ -29,7 +29,7 @@
   <div class="field">
     <%= form.label :perfil %>
     <%= form.select(:perfil, Person.perfils.keys.map {|key| [key.humanize, key]},
-      id: :athlete_status,  include_blank: true) %>
+      id: :person_perfil,  include_blank: true) %>
   </div>
 
   <div style="visibility:hidden" class="field">

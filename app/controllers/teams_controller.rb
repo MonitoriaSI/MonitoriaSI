@@ -15,10 +15,14 @@ class TeamsController < ApplicationController
   # GET /teams/new
   def new
     @team = Team.new
+    @semesters = Semester.all
+    @discliplines = Discipline.all
   end
 
   # GET /teams/1/edit
   def edit
+    @semesters = Semester.all
+    @discliplines = Discipline.all
   end
 
   # POST /teams
