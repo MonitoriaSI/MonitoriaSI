@@ -1,4 +1,5 @@
 class Person < ApplicationRecord
     belongs_to :user
-    enum perfil: [:admin, :student]
+    has_one :monitor, class_name: "Team", foreign_key: "monitor_id"
+    enum perfil: [:coordenador, :aluno]
 end
