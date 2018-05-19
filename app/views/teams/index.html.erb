@@ -14,7 +14,7 @@
   <tbody>
     <% @teams.each do |team| %>
       <tr>
-        <td><%= team.discipline.descricao %></td>
+        <td><%= team.discipline %></td>
         <td><%= team.semester %></td>
         <td><%= link_to 'Show', team %></td>
         <td><%= link_to 'Edit', edit_team_path(team) %></td>

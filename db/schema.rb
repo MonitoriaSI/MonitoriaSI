@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180519142138) do
+ActiveRecord::Schema.define(version: 20180518173104) do
 
   create_table "disciplines", force: :cascade do |t|
     t.string "descricao"
@@ -58,9 +58,7 @@ ActiveRecord::Schema.define(version: 20180519142138) do
     t.binary "editalAnexo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "monitor_id"
     t.index ["discipline_id"], name: "index_teams_on_discipline_id"
-    t.index ["monitor_id"], name: "index_teams_on_monitor_id"
     t.index ["semester_id"], name: "index_teams_on_semester_id"
   end
 
