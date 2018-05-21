@@ -21,5 +21,8 @@
 
 <% end %>
 
-<%= link_to 'Edit', edit_team_path(@team) %> |
+
+<%= link_to 'Editar Turma', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>
+
+<%= render '/events/index', event: @events %>
