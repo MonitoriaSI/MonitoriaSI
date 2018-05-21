@@ -19,7 +19,7 @@
         <td><%= person.nome %></td>
         <td><%= person.matricula %></td>
         <td><%= person.telefone %></td>
-        <td><%= person.perfil %></td>
+        <td><%= person.perfil.humanize %></td>
         <td><%= link_to 'Show', person %></td>
         <td><%= link_to 'Edit', edit_person_path(person) %></td>
         <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
