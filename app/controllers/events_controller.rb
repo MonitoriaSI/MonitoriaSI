@@ -1,10 +1,19 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :get_team
+
+  def get_team
+    @team = Team.find(params[:team_id])
+  end
 
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    if params[:team_id].nil?
+      @events = Event.all
+    else
+      @events = @team.events
+    end
   end
 
   # GET /events/1
@@ -15,6 +24,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @event.team = @team
   end
 
   # GET /events/1/edit
@@ -28,7 +38,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to [@team,@event], notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -69,6 +79,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:team_id, :inicio, :fim, :local)
+      params.require(:event).permit(:team_id, :inicio, :fim, :local, :descricao)
     end
 end

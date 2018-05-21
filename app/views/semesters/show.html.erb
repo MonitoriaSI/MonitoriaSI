@@ -12,12 +12,12 @@
 
 <p>
   <strong>Datainicio:</strong>
-  <%= @semester.dataInicio %>
+  <%= I18n.l(@semester.dataInicio) %>
 </p>
 
 <p>
   <strong>Datafim:</strong>
-  <%= @semester.dataFim %>
+  <%= I18n.l(@semester.dataFim) %>
 </p>
 
 <%= link_to 'Edit', edit_semester_path(@semester) %> |
