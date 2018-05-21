@@ -3,11 +3,13 @@
 one:
   nome: MyString
   matricula: MyString
-  telefone: MyString
+  telefone: MyString1
   perfil: MyString
+  user_id: 1
 
 two:
   nome: MyString
-  matricula: MyString
+  matricula: MyString2
   telefone: MyString
   perfil: MyString
+  user_id: 2
