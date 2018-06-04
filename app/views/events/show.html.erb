@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @event.team %>
+</p>
+
+<p>
+  <strong>Inicio:</strong>
+  <%= @event.inicio %>
+</p>
+
+<p>
+  <strong>Fim:</strong>
+  <%= @event.fim %>
+</p>
+
+<p>
+  <strong>Local:</strong>
+  <%= @event.local %>
+</p>
+
+<%= link_to 'Edit', edit_team_event_path(@team,@event) %> |
+<%= link_to 'Back', team_path(@team) %>

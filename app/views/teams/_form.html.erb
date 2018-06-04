@@ -1,0 +1,28 @@
+<%= form_with(model: team, local: true) do |form| %>
+  <% if team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
+
+      <ul>
+      <% team.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :discipline_id %>
+    <%= form.select(:discipline_id, @discliplines.collect {|d| [d.descricao, d.id]}, id: :team_discipline_id,  include_blank: true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :semester_id %>
+    <%= form.select(:semester_id, @semesters.collect {|s| [s,s.id]}, id: :team_semester_id,  include_blank: true) %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
