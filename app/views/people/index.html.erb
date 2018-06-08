@@ -19,15 +19,18 @@
         <td><%= person.nome %></td>
         <td><%= person.matricula %></td>
         <td><%= person.telefone %></td>
-        <td><%= person.perfil.humanize %></td>
+        <td><%= person.perfil  %></td>
         <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.person.perfil == Person.perfils.key(0) || current_user.person.matricula == person.matricula %>
+          <td><%= link_to 'Edit', edit_person_path(person) %></td>
+          <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Person', new_person_path %>
+<% if current_user.person.perfil == Person.perfils.key(0) %>
+  <%= link_to 'New Person', new_person_path %>
+<% end %>

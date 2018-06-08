@@ -26,10 +26,10 @@
     <%= form.text_field :telefone, id: :person_telefone %>
   </div>
 
-  <div class="field">
+  <div style="visibility:hidden" class="field">
     <%= form.label :perfil %>
     <%= form.select(:perfil, Person.perfils.keys.map {|key| [key.humanize, key]},
-      id: :person_perfil,  include_blank: true) %>
+      id: :person_perfil,  include_blank: true, :selected=>Person.perfils.key(1) ) %>
   </div>
 
   <div style="visibility:hidden" class="field">

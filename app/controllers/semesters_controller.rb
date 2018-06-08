@@ -1,6 +1,7 @@
 class SemestersController < ApplicationController
   before_action :set_semester, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  
   # GET /semesters
   # GET /semesters.json
   def index
