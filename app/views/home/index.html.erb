@@ -1,2 +1,33 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Monitoria SI</h1>
+    <p class="lead">Sistema de controle de monitores do curso de Sistemas para Internet</p>
+  </div>
+</div>
+
+<h3>Turmas com monitores</h3>
+<table class="table table-striped">
+  <thead>
+    <% @teams.each do |team| %>
+      <% if team.monitor != nil  %>
+        <tr>
+          <th scope="col">Disciplina</th>
+          <th scope="col">Semestre</th>
+          <th scope="col">Monitor</th>
+        </tr>
+      <% end %>
+    <% end %>
+  </thead>
+
+  <tbody>
+    <% @teams.each do |team| %>
+      <% if team.monitor != nil  %>
+        <tr>
+            <td><%= team.discipline.descricao %></td>
+            <td><%= team.semester %></td>
+            <td><%= team.monitor.nome unless team.monitor.nil?%></td>
+        </tr>
+      <% end  %>
+    <% end %>
+  </tbody>
+</table>
