@@ -21,7 +21,7 @@
         <td><%= I18n.l(semester.dataInicio,format: :short) %></td>
         <td><%= I18n.l(semester.dataFim,format: :short) %></td>
         <td><%= link_to 'Show', semester %></td>
-        <% if current_user.person.perfil == Person.perfils.key(0) %>
+        <% if current_user.person.coordenador? %>
           <td><%= link_to 'Edit', edit_semester_path(semester) %></td>
           <td><%= link_to 'Destroy', semester, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <%end%>
@@ -31,6 +31,6 @@
 </table>
 
 <br>
-<% if current_user.person.perfil == Person.perfils.key(0) %>
+<% if current_user.person.coordenador? %>
   <%= link_to 'New Semester', new_semester_path %>
 <%end%>

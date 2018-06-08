@@ -26,7 +26,7 @@
     <%= form.text_field :telefone, id: :person_telefone %>
   </div>
 
-  <%if current_user.person.perfil == Person.perfils.key(0) %>
+  <%if current_user.person.coordenador? %>
     <div class="field">
       <%= form.label :perfil %>
       <%= form.select(:perfil, Person.perfils.keys.map {|key| [key.humanize, key]},

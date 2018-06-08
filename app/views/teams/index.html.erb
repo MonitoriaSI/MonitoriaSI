@@ -19,7 +19,7 @@
         <td><%= team.semester %></td>
         <td><%= team.monitor.nome unless team.monitor.nil?%></td>
         <td><%= link_to 'Show', team %></td>
-        <% if current_user.person.perfil == Person.perfils.key(0)%>
+        <% if current_user.person.coordenador?%>
           <td><%= link_to 'Edit', edit_team_path(team) %></td>
           <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <%end%>
@@ -29,6 +29,6 @@
 </table>
 
 <br>
-<% if current_user.person.perfil == Person.perfils.key(0)%>
+<% if current_user.person.coordenador? %>
   <%= link_to 'New Team', new_team_path %>
 <%end%>

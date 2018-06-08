@@ -21,7 +21,7 @@
         <td><%= person.telefone %></td>
         <td><%= person.perfil  %></td>
         <td><%= link_to 'Show', person %></td>
-        <% if current_user.person.perfil == Person.perfils.key(0) || current_user.person.matricula == person.matricula %>
+        <% if current_user.person.coordenador? || current_user.person.matricula == person.matricula %>
           <td><%= link_to 'Edit', edit_person_path(person) %></td>
           <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
@@ -31,6 +31,6 @@
 </table>
 
 <br>
-<% if current_user.person.perfil == Person.perfils.key(0) %>
+<% if current_user.person.coordenador? %>
   <%= link_to 'New Person', new_person_path %>
 <% end %>
