@@ -12,7 +12,7 @@
   <div class="form-group">
         <input type="text" class="form-control" <%= text_field_tag 'search', nil, placeholder: "Ex: Raimundo" %>
         <button type="submit" class="btn btn-primary" <%= submit_tag "Buscar", :name => nil %>Buscar</button>
-  </div>    
+  </div>
 <% end %>
 
 <% if @people != nil %>
@@ -23,7 +23,7 @@
           <th>Contato</th>
         </tr>
       </thead>
-      
+
       <tbody>
         <% @people.each do |contato| %>
           <tr>
@@ -41,15 +41,11 @@
 <h3>Turmas com monitores</h3>
 <table class="table table-striped">
   <thead>
-    <% @teams.each do |team| %>
-      <% if team.monitor != nil  %>
-        <tr>
-          <th scope="col">Disciplina</th>
-          <th scope="col">Semestre</th>
-          <th scope="col">Monitor</th>
-        </tr>
-      <% end %>
-    <% end %>
+    <tr>
+      <th scope="col">Disciplina</th>
+      <th scope="col">Semestre</th>
+      <th scope="col">Monitor</th>
+    </tr>
   </thead>
 
   <tbody>
