@@ -23,13 +23,16 @@
         <td><%= discipline.cargaHoraria %></td>
         <td><%= discipline.periodo %></td>
         <td><%= link_to 'Show', discipline %></td>
-        <td><%= link_to 'Edit', edit_discipline_path(discipline) %></td>
-        <td><%= link_to 'Destroy', discipline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.person.perfil == Person.perfils.key(0) %>
+          <td><%= link_to 'Edit', edit_discipline_path(discipline) %></td>
+          <td><%= link_to 'Destroy', discipline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Discipline', new_discipline_path %>
+<% if current_user.person.perfil == Person.perfils.key(0) %>
+  <%= link_to 'New Discipline', new_discipline_path %>
+<%end%>

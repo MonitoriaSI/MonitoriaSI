@@ -19,13 +19,16 @@
         <td><%= team.semester %></td>
         <td><%= team.monitor.nome unless team.monitor.nil?%></td>
         <td><%= link_to 'Show', team %></td>
-        <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.person.perfil == Person.perfils.key(0)%>
+          <td><%= link_to 'Edit', edit_team_path(team) %></td>
+          <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Team', new_team_path %>
+<% if current_user.person.perfil == Person.perfils.key(0)%>
+  <%= link_to 'New Team', new_team_path %>
+<%end%>

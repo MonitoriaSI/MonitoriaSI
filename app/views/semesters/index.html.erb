@@ -21,13 +21,16 @@
         <td><%= I18n.l(semester.dataInicio,format: :short) %></td>
         <td><%= I18n.l(semester.dataFim,format: :short) %></td>
         <td><%= link_to 'Show', semester %></td>
-        <td><%= link_to 'Edit', edit_semester_path(semester) %></td>
-        <td><%= link_to 'Destroy', semester, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.person.perfil == Person.perfils.key(0) %>
+          <td><%= link_to 'Edit', edit_semester_path(semester) %></td>
+          <td><%= link_to 'Destroy', semester, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Semester', new_semester_path %>
+<% if current_user.person.perfil == Person.perfils.key(0) %>
+  <%= link_to 'New Semester', new_semester_path %>
+<%end%>
