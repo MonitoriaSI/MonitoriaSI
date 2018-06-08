@@ -26,12 +26,19 @@
     <%= form.text_field :telefone, id: :person_telefone %>
   </div>
 
+  <%if current_user.person.perfil == Person.perfils.key(0) %>
+    <div class="field">
+      <%= form.label :perfil %>
+      <%= form.select(:perfil, Person.perfils.keys.map {|key| [key.humanize, key]},
+        id: :person_perfil,  include_blank: true ) %>
+    </div>
+  <%else%>
   <div style="visibility:hidden" class="field">
     <%= form.label :perfil %>
     <%= form.select(:perfil, Person.perfils.keys.map {|key| [key.humanize, key]},
       id: :person_perfil,  include_blank: true, :selected=>Person.perfils.key(1) ) %>
   </div>
-
+  <%end%>
   <div style="visibility:hidden" class="field">
     <%= form.label :user_id %>
     <%= form.text_field :user_id, id: :person_user_id %>
