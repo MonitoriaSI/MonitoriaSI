@@ -55,4 +55,10 @@ Rails.application.configure do
   #  default URL options for the Devise mailer
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => '192.168.33.10', :port => 1025 }
+  config.action_mailer.raise_delivery_errors = false
+
+
 end

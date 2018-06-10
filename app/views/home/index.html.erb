@@ -28,7 +28,13 @@
         <% @people.each do |contato| %>
           <tr>
             <td><%= contato.nome %></td>
-            <td><%= contato.telefone %></td>
+            <td>
+                <%= form_tag contact_index_path, :method => 'get' do %>
+                  <div class="form-group">
+                        <button <%= submit_tag "Buscar" , :name => 'email' , value: contato.user.email %>Contatar</button>
+                  </div>
+                <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
