@@ -1,1 +1,11 @@
-<h1>Teste</h1>
+
+<% if current_user.person.coordenador? %>
+    <h1>Gerar relatório</h1>
+    <%= render 'form', team: @reports %>
+
+<% else %>
+    <h1>Acesso apenas para coordenadores!  before_action :set_team, only: [:show, :edit, :update, :destroy]</h1>
+<%end%>
+
+
+
