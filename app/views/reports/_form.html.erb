@@ -1,7 +1,5 @@
 <%= form_tag reports_path, :method => 'get' do %>
-
- <%= select(nil, "disclipline_id",  @discliplines.collect {|d| [ d.descricao, d.id ] }) %><br><br>
- <%= select(nil, "semester_id",  @semesters.collect {|s| [ "#{s.ano}"+"/"+"#{s.id}", s.id ] }) %>
+ <%= select(nil, "team_id",  @teams.collect {|t| [ "#{t.discipline.descricao} - #{t.semester.ano}/#{t.semester.periodo}", t.id ] }) %>
  <br><br>
  <%= submit_tag "Gerar", class: "btn btn-primary" , :name => nil %>
 
