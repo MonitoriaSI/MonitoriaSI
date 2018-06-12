@@ -1,0 +1,6 @@
+<%= form_tag reports_path, :method => 'get' do %>
+ <%= select(nil, "team_id",  @teams.collect {|t| [ "#{t.discipline.descricao} - #{t.semester.ano}/#{t.semester.periodo}", t.id ] }) %>
+ <br><br>
+ <%= submit_tag "Gerar", class: "btn btn-primary" , :name => nil %>
+
+<% end %>

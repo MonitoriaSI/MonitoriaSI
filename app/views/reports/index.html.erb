@@ -1,0 +1,41 @@
+
+<% if current_user.person.coordenador? %>
+    <h1>Gerar relatório</h1>
+    <%= render 'form', team: @reports %>
+    
+    <% if @events != nil %>
+            <h3>Relatório de Monitorias</h3>
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">Inicio</th>
+                <th scope="col">Fim</th>
+                <th scope="col">Monitor</th>
+                <th scope="col">Local</th>
+                <th scope="col">Descrição</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                <% @events.each do |e| %>
+                    <tr>
+                        <td><%= e.inicio %></td>
+                        <td><%= e.fim %></td>
+                        <td><%= e.team.monitor.nome %></td>
+                        <td><%= e.local %></td>
+                        <td><%= e.descricao %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+            </table>
+    <%end%>
+
+    
+
+<% else %>
+    <h1>Acesso apenas para coordenadores!</h1>
+<%end%>
+
+
+
