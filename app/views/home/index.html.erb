@@ -15,35 +15,6 @@
   </div>
 <% end %>
 
-<% if @people != nil %>
-  <table>
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Contato</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @people.each do |contato| %>
-          <tr>
-            <td><%= contato.nome %></td>
-            <td>
-                <%= form_tag contact_index_path, :method => 'get' do %>
-                  <div class="form-group">
-                        <button <%= submit_tag "Buscar" , :name => 'email' , value: contato.user.email %>Contatar</button>
-                  </div>
-                <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <br>
-<% end %>
-
-
-
 <h3>Turmas com monitores</h3>
 <table class="table table-striped">
   <thead>
@@ -51,18 +22,28 @@
       <th scope="col">Disciplina</th>
       <th scope="col">Semestre</th>
       <th scope="col">Monitor</th>
+      <th scope="col">Acessar</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @teams.each do |team| %>
-      <% if team.monitor != nil  %>
-        <tr>
-            <td><%= team.discipline.descricao %></td>
-            <td><%= team.semester %></td>
-            <td><%= team.monitor.nome unless team.monitor.nil?%></td>
-        </tr>
-      <% end  %>
+
+        <% @teams.each do |team| %>
+          <% if team.monitor != nil  %>
+              <%  if team.discipline.descricao.include? @chave or team.monitor.nome.include? @chave %>
+                  <tr>
+                      <td><%= team.discipline.descricao %></td>
+                      <td><%= team.semester %></td>
+                      <td><%= team.monitor.nome unless team.monitor.nil?%></td>
+                      <td>       
+                          <div class="form-group">
+                          <%= link_to '<button type="button">Descrição</button>'.html_safe,"teams/#{team.id}" %>                    
+                          </div>
+                      </td>
+                  </tr>
+               <% end  %>
+          <% end  %>
+
     <% end %>
   </tbody>
 </table>
