@@ -43,9 +43,9 @@ end
 
 group :production do
   #Postgres
-  # gem 'pg', '0.21.0'
-  # usado por heroku 
-  gem 'rails_12factor' 
+  gem 'pg', '0.21.0'
+  # usado por heroku
+  gem 'rails_12factor'
 end
 
 group :development do
