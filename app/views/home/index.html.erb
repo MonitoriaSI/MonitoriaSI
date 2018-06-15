@@ -37,7 +37,7 @@
                       <td><%= team.monitor.nome unless team.monitor.nil?%></td>
                       <td>       
                           <div class="form-group">
-                          <%= link_to '<button type="button">Descrição</button>'.html_safe,"teams/#{team.id}" %>                    
+                          <%= link_to '<button type="button">Descrição</button>'.html_safe,team_path( team.id) %>                    
                           </div>
                       </td>
                   </tr>
