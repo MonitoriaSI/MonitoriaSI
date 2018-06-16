@@ -2,7 +2,7 @@
 
 <p>
   <strong>Team:</strong>
-  <%= @event.team %>
+  <%= @event.team.id %>
 </p>
 
 <p>
@@ -19,6 +19,22 @@
   <strong>Local:</strong>
   <%= @event.local %>
 </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Participante confirmado</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event.people.each do |p| %>
+      <tr>
+        <td><%= p.nome %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_team_event_path(@team,@event) %> |
 <%= link_to 'Back', team_path(@team) %>

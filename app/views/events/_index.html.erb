@@ -29,6 +29,11 @@
           <td><%= link_to 'Edit', edit_team_event_path(@team,event) %></td>
           <td><%= link_to 'Destroy', [@team,event], method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <%end%>
+        <% if current_user.person.events.include? event %>
+            <td><%= link_to 'Sair', :name => event.id %></td>
+        <% else %>
+          <td><%= link_to 'Participar', :name => event.id %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
