@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<% if current_user.person.perfil == Person.perfils.key(0)%>
+<% if current_user.person.coordenador?%>
   <p>
     <strong>Discipline:</strong>
     <%= @team.discipline.descricao %>
@@ -23,7 +23,7 @@
   <% end %>
 <% end %>
 
-<% if current_user.person.perfil == Person.perfils.key(0)%>
+<% if current_user.person.coordenador? %>
   <%= link_to 'Editar Turma', edit_team_path(@team) %> |
   <%= link_to 'Back', teams_path %>
 <%end%>
