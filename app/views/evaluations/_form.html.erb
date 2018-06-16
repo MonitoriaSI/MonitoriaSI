@@ -25,9 +25,7 @@
 
   <div class="field">
     <%= form.label :event_id %>
-    <% if @events != nil %>
-      <%= form.select(:event_id, @events.collect {|e| [e.descricao, e.id]}, id: :evaluation_event_id,  include_blank: true) %>
-    <%end%>
+    <%= form.text_field :event_id, id: :evaluation_event_id, :value=>@events.id, readonly: true %>
   </div>
 
   <div class="actions">

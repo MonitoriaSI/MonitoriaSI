@@ -68,7 +68,11 @@
 
 
 <% if @person == true %>
-  <%= link_to 'Avaliar Monitoria', new_evaluation_path(@event), :class => 'btn btn-success' %>
+<%= form_tag new_evaluation_path(@event), :method => 'get' do %>
+   <div class="form-group">
+     <button <%= submit_tag "Avaliar Monitoria" , :name => 'monitoria' , value: @event.id %>Avaliar Monitoria</button>
+   </div>
+<% end %>
 <% end %>
 <br><br>
 <% if current_user.person.coordenador? %>

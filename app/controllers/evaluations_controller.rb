@@ -5,31 +5,28 @@ class EvaluationsController < ApplicationController
   # GET /evaluations.json
   def index
     @evaluations = Evaluation.all
-    @events = Event.all
   end
 
   # GET /evaluations/1
   # GET /evaluations/1.json
   def show
-    @events = Event.all
   end
 
   # GET /evaluations/new
   def new
     @evaluation = Evaluation.new
-    @events = Event.all
+    @events = Event.find params[:monitoria]
   end
 
   # GET /evaluations/1/edit
   def edit
-    @events = Event.all
+    @events = Event.find params[:monitoria]
   end
 
   # POST /evaluations
   # POST /evaluations.json
   def create
     @evaluation = Evaluation.new(evaluation_params)
-    @events = Event.all
 
     respond_to do |format|
       if @evaluation.save
