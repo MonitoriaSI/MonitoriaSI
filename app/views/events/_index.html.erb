@@ -11,6 +11,7 @@
       <th>Inicio</th>
       <th>Fim</th>
       <th>Local</th>
+      <th>Monitor</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,11 +23,12 @@
         <td><%= event.inicio %></td>
         <td><%= event.fim %></td>
         <td><%= event.local %></td>
+        <td><%= event.team.monitor.nome %></td>
         <td><%= link_to 'Show', team_event_path(@team,event) %></td>
-        <% if current_user.person.matricula == event.team.monitor.matricula %>
+        <% if current_user.person == event.team.monitor %>
           <td><%= link_to 'Edit', edit_team_event_path(@team,event) %></td>
           <td><%= link_to 'Destroy', [@team,event], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <%end%>
         <% if current_user.person.events.include? event %>
             <td><%= link_to 'Sair', :name => event.id %></td>
         <% else %>
