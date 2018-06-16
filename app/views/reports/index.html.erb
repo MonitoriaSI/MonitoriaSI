@@ -2,12 +2,13 @@
 <% if current_user.person.coordenador? %>
     <h1>Gerar relatório</h1>
     <%= render 'form', team: @reports %>
-    
+
     <% if @events != nil %>
             <h3>Relatório de Monitorias</h3>
             <table class="table table-striped">
             <thead>
                 <tr>
+                <th scope="col">Disciplina</th>
                 <th scope="col">Inicio</th>
                 <th scope="col">Fim</th>
                 <th scope="col">Monitor</th>
@@ -20,6 +21,7 @@
             <tbody>
                 <% @events.each do |e| %>
                     <tr>
+                        <td><%= e.team.discipline.descricao %></td>
                         <td><%= e.inicio %></td>
                         <td><%= e.fim %></td>
                         <td><%= e.team.monitor.nome %></td>
@@ -31,11 +33,8 @@
             </table>
     <%end%>
 
-    
+
 
 <% else %>
     <h1>Acesso apenas para coordenadores!</h1>
 <%end%>
-
-
-
