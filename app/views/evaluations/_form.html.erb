@@ -12,15 +12,15 @@
   <% end %>
 
   <p>Nota:</p>
-  <%= form.radio_button :nota, 1 %><%= form.label :"1" %>
-  <%= form.radio_button :nota, 2 %><%= form.label :"2" %>
-  <%= form.radio_button :nota, 3 %><%= form.label :"3" %>
-  <%= form.radio_button :nota, 4 %><%= form.label :"4" %>
-  <%= form.radio_button :nota, 5 %><%= form.label :"5" %>
+  <%= form.radio_button :nota, 1 %><%= form.label :"1", id: :evaluation_nota %>
+  <%= form.radio_button :nota, 2 %><%= form.label :"2", id: :evaluation_nota %>
+  <%= form.radio_button :nota, 3 %><%= form.label :"3", id: :evaluation_nota %>
+  <%= form.radio_button :nota, 4 %><%= form.label :"4", id: :evaluation_nota %>
+  <%= form.radio_button :nota, 5 %><%= form.label :"5", id: :evaluation_nota %>
 
   <p>Comentário:</p>
   <div class="field">
-    <%= form.text_area(:comentario, size: '50x5') %>
+    <%= form.text_area :comentario, size: '50x5', id: :evaluation_comentario %>
   </div>
 
   <div class="field">
@@ -29,11 +29,6 @@
       <%= form.select(:event_id, @events.collect {|e| [e.descricao, e.id]}, id: :evaluation_event_id,  include_blank: true) %>
     <%end%>
   </div>
-
-  <!-- <div class="field">
-    <%= form.label :event_id %>
-    <%= form.text_field :event_id, id: :evaluation_event_id %>
-  </div> -->
 
   <div class="actions">
     <%= form.submit %>
