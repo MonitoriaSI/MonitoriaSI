@@ -20,16 +20,19 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @events = Event.all
   end
 
   # GET /events/new
   def new
     @event = Event.new
     @event.team = @team
+    @events = Event.all
   end
 
   # GET /events/1/edit
   def edit
+    @events = Event.all
   end
 
   # POST /events

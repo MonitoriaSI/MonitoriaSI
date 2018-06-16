@@ -23,7 +23,7 @@
 <table>
   <thead>
     <tr>
-      <th>Participante confirmado</th>
+      <th>Participantes confirmados</th>
     </tr>
   </thead>
 
@@ -35,6 +35,19 @@
     <% end %>
   </tbody>
 </table>
+
+<% @person = false %>
+<% @event.people.each do |p| %>
+  <% if current_user.person == p %>
+    <% @person = true %>
+  <% end %>
+<% end %>
+
+<br>
+<% if @person == true %>
+  <%= link_to 'Avaliar Monitoria', new_evaluation_path(@event), :class => 'btn btn-success' %>
+<% end %>
+<br><br>
 
 <%= link_to 'Edit', edit_team_event_path(@team,@event) %> |
 <%= link_to 'Back', team_path(@team) %>
