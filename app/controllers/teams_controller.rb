@@ -11,6 +11,16 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+
+    if params[:name] 
+       if current_user.person.events.include? Event.find(params[:name])
+        Event.find(params[:name]).people.delete(current_user.person)
+        current_user.person.events.delete(Event.find(params[:name]))
+       else
+          current_user.person.events << Event.find(params[:name])
+       end
+    end
+
     @alunos = Person.aluno
     @events = @team.events
     @event = Event.new
