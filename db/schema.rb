@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20180615230851) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "descricao"
+    t.string "status"
     t.index ["team_id"], name: "index_events_on_team_id"
   end
 
