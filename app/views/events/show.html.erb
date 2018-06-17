@@ -68,7 +68,7 @@
 
 
 <% if @person == true %>
-<%= form_tag new_evaluation_path(@event), :method => 'get' do %>
+<%= form_tag new_evaluation_path, :method => 'get' do %>
    <div class="form-group">
      <button <%= submit_tag "Avaliar Monitoria" , :name => 'monitoria' , value: @event.id %>Avaliar Monitoria</button>
    </div>

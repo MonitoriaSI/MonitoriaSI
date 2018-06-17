@@ -3,6 +3,7 @@ require 'test_helper'
 class EvaluationsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @evaluation = evaluations(:one)
+    @event = events(:one)
   end
 
   test "should get index" do
@@ -11,7 +12,7 @@ class EvaluationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_evaluation_url
+    get new_evaluation_url(:monitoria => @event.id)
     assert_response :success
   end
 
@@ -29,7 +30,7 @@ class EvaluationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
-    get edit_evaluation_url(@evaluation)
+    get edit_evaluation_url(@evaluation, :monitoria => @event.id)
     assert_response :success
   end
 
