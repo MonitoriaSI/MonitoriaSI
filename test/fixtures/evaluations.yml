@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nota: 1
+  comentario: MyString
+  event: one
+
+two:
+  nota: 1
+  comentario: MyString
+  event: two

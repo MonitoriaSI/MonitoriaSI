@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nota:</strong>
+  <%= @evaluation.nota %>
+</p>
+
+<p>
+  <strong>Comentario:</strong>
+  <%= @evaluation.comentario %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @evaluation.event.descricao %>
+</p>
+
+<%= link_to 'Back', evaluations_path %>

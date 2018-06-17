@@ -3,9 +3,11 @@
 one:
   discipline: one
   semester: one
-  editalAnexo: 
+  editalAnexo:
+  monitor: one
 
 two:
   discipline: two
   semester: two
-  editalAnexo: 
+  editalAnexo:
+  monitor: two

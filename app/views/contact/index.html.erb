@@ -1,9 +1,9 @@
-<h2> Agendar monitoria para: <%= @person.person.nome %> </h2>
+<h2> Mensagem para: <%= @person.person.nome %> </h2>
 
-<%=  form_tag home_index_path, :method => 'get' do  %> 
+<%=  form_tag contact_path(self), :method => 'get' do |f| %> 
   <div class="form-group">
-        <label> Informe seu email: </label> <br>
-        <%= text_field_tag 'remet', nil, size: 51, placeholder: "Ex: jricardo@gmail.com" %><br><br>
+        <label> Email: </label> <br>
+        <%= text_field_tag 'remet', current_user.email, size: 51, class: "disabled" %><br><br>
         <label> Mensagem para o monitor: </label> <br>
         <%= text_area_tag 'msg', nil, rows: 10, cols: 50, placeholder: "Mensagem..." %><br><br>
         <%= submit_tag "Enviar", class: "btn btn-primary", :name => nil %>

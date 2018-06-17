@@ -2,7 +2,21 @@
 
 <h1>Events</h1>
 
-<%= link_to 'Agendar monitoria ', new_team_event_path(@team) %>
+
+<%= form_tag new_team_event_path(@team), :method => 'get' do %>
+  <div class="form-group" id="btn_agendar">
+        <button <%= submit_tag "Agendar monitoria" , :name => nil%>Agendar monitoria</button>
+  </div>
+<% end %>
+
+  <%if @team.monitor != nil %>
+    <%= form_tag contact_index_path, :method => 'get' do %>
+      <div class="form-group" id="btn_contactar">
+            <button <%= submit_tag "Contactar monitor" , :name => 'email' , value: @team.monitor.user.email %>Contactar monitor</button>
+      </div>
+    <% end %>
+  <% end %>
+
 
 <table>
   <thead>
