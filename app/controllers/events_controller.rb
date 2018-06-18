@@ -21,6 +21,10 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @events = Event.all
+    if params[:status]
+      @event.update_attributes(status: true)
+      current_user.person.events <<  @event
+    end
   end
 
   # GET /events/new
@@ -39,6 +43,13 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    if current_user.person.turma
+      if current_user.person.turma == @team
+        @event.status = true
+      end
+    end
+  
+    @event.autor_id = current_user.id
     current_user.person.events <<  @event
 
     respond_to do |format|
@@ -84,6 +95,10 @@ class EventsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    def event_params_status
+      params.require(:event).permit(:status)
+    end
+
     def event_params
       params.require(:event).permit(:team_id, :inicio, :fim, :local, :descricao)
     end

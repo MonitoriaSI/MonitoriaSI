@@ -32,20 +32,41 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.descricao %></td>
-        <td><%= event.inicio %></td>
-        <td><%= event.fim %></td>
-        <td><%= event.local %></td>
-        <td><%= link_to 'Show', team_event_path(@team,event) %></td>
-        <% if current_user.person == event.team.monitor %>
-          <td><%= link_to 'Edit', edit_team_event_path(@team,event) %></td>
-          <td><%= link_to 'Destroy', [@team,event], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%if event.status%>
+            <td><%= event.descricao %></td>
+            <td><%= event.inicio %></td>
+            <td><%= event.fim %></td>
+            <td><%= event.local %></td>
+            <td><%= link_to 'Show', team_event_path(@team,event) %></td>
+            <% if current_user.person == event.team.monitor %>
+              <td><%= link_to 'Edit', edit_team_event_path(@team,event) %></td>
+              <td><%= link_to 'Destroy', [@team,event], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <%end%>
+            <% if current_user.person.events.include? event %>
+                <td><%= link_to 'Sair', :name => event.id %></td>
+            <% else %>
+              <td><%= link_to 'Participar', :name => event.id %></td>
+            <% end %>
+        <% elsif current_user.person.turma == @team or current_user.person.id == event.autor_id %>
+              <td><%= event.descricao %></td>
+              <td><%= event.inicio %></td>
+              <td><%= event.fim %></td>
+              <td><%= event.local %></td>
+              <td><%= link_to 'Edit', edit_team_event_path(@team,event) %></td>
+              <td><%= link_to 'Show', team_event_path(@team,event) %></td>
+              <td><%= link_to 'Destroy', [@team,event], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<td>Aguardando aprovação</td>
+
+              <% if current_user.person.turma == @team %>               
+                  <%= form_tag team_event_path(@team), :method => 'get' do %>
+                    <td><div class="form-group" id="btn_agendar">
+                      <button <%= submit_tag "Aprovar" , :name => 'status' , :value => true %>Aprovar</button>                    </div></td>
+                  <% end %>
+               
+              <%end%>
+                 
+          
         <%end%>
-        <% if current_user.person.events.include? event %>
-            <td><%= link_to 'Sair', :name => event.id %></td>
-        <% else %>
-          <td><%= link_to 'Participar', :name => event.id %></td>
-        <% end %>
       </tr>
     <% end %>
   </tbody>
