@@ -1,0 +1,34 @@
+<%= form_with(model: evaluation, local: true) do |form| %>
+  <% if evaluation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(evaluation.errors.count, "error") %> prohibited this evaluation from being saved:</h2>
+
+      <ul>
+      <% evaluation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>Nota:</p>
+  <%= form.radio_button :nota, 1 %><%= form.label :"1", id: :evaluation_nota %>
+  <%= form.radio_button :nota, 2 %><%= form.label :"2", id: :evaluation_nota %>
+  <%= form.radio_button :nota, 3 %><%= form.label :"3", id: :evaluation_nota %>
+  <%= form.radio_button :nota, 4 %><%= form.label :"4", id: :evaluation_nota %>
+  <%= form.radio_button :nota, 5 %><%= form.label :"5", id: :evaluation_nota %>
+
+  <p>Comentário:</p>
+  <div class="field">
+    <%= form.text_area :comentario, size: '50x5', id: :evaluation_comentario %>
+  </div>
+
+  <div class="field">
+    <%= form.label :event_id %>
+    <%= form.text_field :event_id, id: :evaluation_event_id, :value=>@events.id, readonly: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

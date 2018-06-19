@@ -20,22 +20,36 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @events = Event.all
+    if params[:status]
+      @event.update_attributes(status: true)
+      current_user.person.events <<  @event
+    end
   end
 
   # GET /events/new
   def new
     @event = Event.new
     @event.team = @team
+    @events = Event.all
   end
 
   # GET /events/1/edit
   def edit
+    @events = Event.all
   end
 
   # POST /events
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    if current_user.person.turma
+      if current_user.person.turma == @team
+        @event.status = true
+      end
+    end
+  
+    @event.autor_id = current_user.id
     current_user.person.events <<  @event
 
     respond_to do |format|
@@ -55,7 +69,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update(event_params)
-        format.html {  redirect_to team_path(@team.id), notice: 'Event was successfully updated.' }
+        format.html { redirect_to [@team,@event], notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
@@ -69,7 +83,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to team_path(@team.id), notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to team_url(@team), notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -81,6 +95,10 @@ class EventsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    def event_params_status
+      params.require(:event).permit(:status)
+    end
+
     def event_params
       params.require(:event).permit(:team_id, :inicio, :fim, :local, :descricao)
     end
