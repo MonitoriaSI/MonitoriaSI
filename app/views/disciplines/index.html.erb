@@ -2,6 +2,15 @@
 
 <h1>Disciplines</h1>
 
+<br>
+<%= form_tag(disciplines_path, :method => :get) do %>
+<%= text_field_tag 'search', nil, placeholder: 'Entre termo Descricao ...'   %>
+<%= submit_tag "Pesquisar ..." %> 
+<% end %> 
+<br>
+
+
+
 <table>
   <thead>
     <tr>
