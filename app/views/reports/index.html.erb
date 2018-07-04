@@ -45,13 +45,12 @@
 
 
             <tbody>
-                <% qtd = Event.group(:team_id).count %>
                 <% @teams.each do |t| %>                
                 <% if t.monitor != nil %>
                     <tr>
                         <td><%= t.discipline.descricao %></td>
                         <td><%= t.monitor.nome unless t.monitor.nil? %></td>
-                        <td><%= qtd[t.id] %></td>
+                        <td><%= Team.find(t.id).events.size %></td>
                     </tr>
                 <% end %>
                 <% end %>
