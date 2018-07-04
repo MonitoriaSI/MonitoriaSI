@@ -5,7 +5,11 @@ class DisciplinesController < ApplicationController
   # GET /disciplines
   # GET /disciplines.json
   def index
-    @disciplines = Discipline.all
+     if params[:search]
+          @disciplines = Discipline.where("descricao like ?", "%#{params[:search]}%")
+      else
+         @disciplines = Discipline.all
+    end
   end
 
   # GET /disciplines/1
