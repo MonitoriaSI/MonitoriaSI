@@ -59,13 +59,18 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1
   # PATCH/PUT /teams/1.json
   def update
-    respond_to do |format|
-      if @team.update(team_params)
-        format.html { redirect_to @team, notice: 'Team was successfully updated.' }
+     respond_to do |format|
+      if (Team.where(monitor_id: team_params[:monitor_id]).size > 0)
+        format.html { redirect_to team_path, notice: 'Este monitor já está alocado em uma disciplina'}
         format.json { render :show, status: :ok, location: @team }
       else
-        format.html { render :edit }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
+        if @team.update(team_params)
+          format.html { redirect_to @team, notice: 'Team was successfully updated.' }
+          format.json { render :show, status: :ok, location: @team }
+        else
+          format.html { render :edit }
+          format.json { render json: @team.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
