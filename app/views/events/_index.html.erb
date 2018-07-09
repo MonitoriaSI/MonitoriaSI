@@ -28,8 +28,9 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
+  <%= " Total de horas de monitoria: #{@events.size} " %>
   <tbody>
+    
     <% @events.each do |event| %>
       <tr>
         <%if event.status%>
@@ -52,6 +53,7 @@
               <td><%= event.inicio %></td>
               <td><%= event.fim %></td>
               <td><%= event.local %></td>
+              
               <td><%= link_to 'Edit', edit_team_event_path(@team,event) %></td>
               <td><%= link_to 'Show', team_event_path(@team,event) %></td>
               <td><%= link_to 'Destroy', [@team,event], method: :delete, data: { confirm: 'Are you sure?' } %></td>
