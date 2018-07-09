@@ -33,7 +33,29 @@
             </table>
     <%end%>
 
+    <h3>Relatório de Monitorias</h3>
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">Disciplina</th>
+                <th scope="col">Monitor</th>
+                <th scope="col">Monitorias realizadas</th>
+                </tr>
+            </thead>
 
+
+            <tbody>
+                <% @teams.each do |t| %>                
+                <% if t.monitor != nil %>
+                    <tr>
+                        <td><%= t.discipline.descricao %></td>
+                        <td><%= t.monitor.nome unless t.monitor.nil? %></td>
+                        <td><%= Team.find(t.id).events.size %></td>
+                    </tr>
+                <% end %>
+                <% end %>
+                </tbody>
+            </table>
 
 <% else %>
     <h1>Acesso apenas para coordenadores!</h1>
