@@ -40,18 +40,23 @@ class TeamsController < ApplicationController
     @discliplines = Discipline.all
   end
 
-  # POST /teams
+  # POST /teams 
   # POST /teams.json
   def create
     @team = Team.new(team_params)
 
-    respond_to do |format|
-      if @team.save
-        format.html { redirect_to @team, notice: 'Team was successfully created.' }
-        format.json { render :show, status: :created, location: @team }
+    respond_to do |format|         
+      
+      if( Team.where(discipline_id:team_params[:discipline_id], semester_id:team_params[:semester_id]).size > 0)
+       format.html { redirect_to teams_path, notice: 'Já existe uma turma com essa disciplina para o semestre informado.' }
       else
-        format.html { render :new }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
+        if @team.save
+          format.html { redirect_to @team, notice: 'Team was successfully created.' }
+          format.json { render :show, status: :created, location: @team }
+        else
+          format.html { render :new }
+          format.json { render json: @team.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
