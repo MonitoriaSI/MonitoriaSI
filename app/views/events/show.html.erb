@@ -1,18 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Team:</strong>
-  <%= @event.team.id %>
+  <strong>Turma:</strong>
+  <%= @event.team.descricao %>
+</p>
+<p>
+  <strong>Monitoria:</strong>
+  <%=@event.descricao %>
 </p>
 
 <p>
-  <strong>Inicio:</strong>
-  <%= @event.inicio %>
+  <strong>Data:</strong>
+  <%= I18n.l(@event.inicio) %>
 </p>
-
 <p>
-  <strong>Fim:</strong>
-  <%= @event.fim %>
+  <strong>Hora:</strong>
+  13:45 h
 </p>
 
 <p>
@@ -44,21 +47,22 @@
 <% end %>
 
 <h2>Avaliações</h2>
+<%if !@event.evaluations.empty?%>
+  <h3>Média: <%=@event.media%></h3>
+<%end%>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Nota</th>
       <th scope="col">Comentário</th>
-      <th scope="col">Evento</th>
+      <th scope="col">Nota</th>
     </tr>
   </thead>
 
   <tbody>
     <% @event.evaluations.each do |evaluation| %>
       <tr>
-        <td><%= evaluation.nota %></td>
         <td><%= evaluation.comentario %></td>
-        <td><%= evaluation.event.descricao %></td>
+        <td><%= evaluation.nota %></td>
       </tr>
     <% end %>
   </tbody>
