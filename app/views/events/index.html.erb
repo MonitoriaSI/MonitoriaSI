@@ -17,6 +17,7 @@
   </thead>
 
   <tbody>
+    
     <% @events.each do |event| %>
       <tr>
         <td><%= event.team %></td>
@@ -24,6 +25,7 @@
         <td><%= event.fim %></td>
         <td><%= event.local %></td>
         <td><%= event.team.monitor %></td>
+        
         <td><%= link_to 'Show', event %></td>
         <% if current_user.person == event.team.monitor %>
           <td><%= link_to 'Edit', edit_event_path(event) %></td>
@@ -33,5 +35,5 @@
     <% end %>
   </tbody>
 </table>
-
+<%= " Total de horas de monitoria: #{@cont} " %>
 <br>
