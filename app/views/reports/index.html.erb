@@ -33,29 +33,59 @@
             </table>
     <%end%>
 
-    <h3>Relatório de Monitorias</h3>
+    <% if @evaluations != nil %>
+        <h3>Relatório de Monitorias Avaliadas</h3>
             <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th scope="col">Descrição da Monitoria</th>
+                    <th scope="col">Disciplina</th>
+                    <th scope="col">Monitor</th>
+                    <th scope="col">Média</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    <% @evaluations.each do |e| %>                
+                        <tr>
+                            <td><%= e.event.descricao %></td>
+                            <td><%= e.event.team.discipline.descricao %></td>
+                            <td><%= e.event.team.monitor.nome %></td>
+                            <td><%= e.nota %></td>
+                        </tr>
+                    <% end %>
+                    
+                    </tbody>
+            </table>
+    <% end -%>
+
+    <% if @teams != nil %> 
+
+    <h3>Relatório de Monitorias Realizadas</h3>
+        <table class="table table-striped">
             <thead>
                 <tr>
                 <th scope="col">Disciplina</th>
                 <th scope="col">Monitor</th>
-                <th scope="col">Monitorias realizadas</th>
+                <th scope="col">Quantidade</th>
                 </tr>
             </thead>
 
 
             <tbody>
                 <% @teams.each do |t| %>                
-                <% if t.monitor != nil %>
-                    <tr>
-                        <td><%= t.discipline.descricao %></td>
-                        <td><%= t.monitor.nome unless t.monitor.nil? %></td>
-                        <td><%= Team.find(t.id).events.size %></td>
-                    </tr>
+                    <% if t.monitor != nil %>
+                        <tr>
+                            <td><%= t.discipline.descricao %></td>
+                            <td><%= t.monitor.nome unless t.monitor.nil? %></td>
+                            <td><%= Team.find(t.id).events.size %></td>
+                        </tr>
+                    <% end %>
                 <% end %>
-                <% end %>
-                </tbody>
-            </table>
+            </tbody>
+        </table>
+    <% end -%>
 
 <% else %>
     <h1>Acesso apenas para coordenadores!</h1>
