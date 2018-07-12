@@ -64,9 +64,10 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1
   # PATCH/PUT /teams/1.json
   def update
-     respond_to do |format|
-      if (Team.where(monitor_id: team_params[:monitor_id]).size > 0)
-        format.html { redirect_to team_path, notice: 'Este monitor já está alocado em uma disciplina'}
+    id_semester = Team.find(params[:id]).semester.id
+    respond_to do |format|
+      if (Team.where("monitor_id = ? and semester_id = ? ", team_params[:monitor_id], id_semester).size > 0)
+        format.html { redirect_to team_path, notice: 'Este monitor está alocado em uma disciplina'}
         format.json { render :show, status: :ok, location: @team }
       else
         if @team.update(team_params)
