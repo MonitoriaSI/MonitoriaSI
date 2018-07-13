@@ -22,8 +22,9 @@ class EventsController < ApplicationController
   def show
     @events = Event.all
     if params[:status]
-      @event.update_attributes(status: true)
-      current_user.person.events <<  @event
+      temp = Event.find(@event.id)
+      temp.update(status: true)
+      current_user.person.events <<  temp
     end
   end
 
