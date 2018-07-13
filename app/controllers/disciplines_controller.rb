@@ -6,7 +6,7 @@ class DisciplinesController < ApplicationController
   # GET /disciplines.json
   def index
      if params[:search]
-          @disciplines = Discipline.where("descricao like ?", "%#{params[:search]}%")
+          @disciplines = Discipline.where("lower(descricao) like ?", "%#{params[:search]}%".downcase)
       else
          @disciplines = Discipline.all
     end
