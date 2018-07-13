@@ -57,7 +57,7 @@
 <td>Aguardando aprovação</td>
 
               <% if current_user.person.turma == @team %>
-                  <%= form_tag("/teams/#{@team.id}/events/#{event.id}", method: 'get') do %>
+                  <%= form_tag team_event_path(@team), :method => 'get' do %>
                     <td><div class="form-group" id="btn_agendar">
                       <button <%= submit_tag "Aprovar" , :name => 'status' , :value => true %>Aprovar</button>                    </div></td>
                   <% end %>
